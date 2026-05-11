@@ -1,0 +1,62 @@
+[project]
+name = "nist-polar-filtering"
+version = "0.1.0"
+description = ""
+readme = "README.md"
+authors = [
+    { name = "Mike Khrisanfov", email = "khrisanfovmike@gmail.com" }
+]
+requires-python = "==3.12.*"
+dependencies = [
+    "numpy>=1.26.4",
+    "pandas>=2.2.2,<3",
+    "seaborn>=0.13.2",
+    "tqdm>=4.66.5",
+    "scikit-learn>=1.5.1",
+    "rdkit>=2024.3.5",
+    "matplotlib>=3.9.1.post1",
+    "torch>=2.4.0,<3",
+    "catboost>=1.2.5,<2",
+    "torch-geometric>=2.5.3,<3",
+    "tabulate>=0.9.0",
+    "xlsxwriter>=3.2.0",
+    "torchinfo>=1.8.0",
+    "optuna>=4.1.0",
+    "optuna-dashboard>=0.17.0",
+    "mordredcommunity>=2.0.6,<3",
+    "yellow-cards-workflow",
+    "pyarrow>=22.0.0",
+]
+
+[dependency-groups]
+dev = [
+    "torchinfo>=1.8.0,<2",
+    "tensorboard>=2.17.0,<3",
+    "ipywidgets>=8.1.5,<9",
+    "ipykernel>=6.29.5,<7",
+    "networkx>=3.4.2,<4",
+    "graphviz>=0.20.3,<0.21",
+    "torchviz>=0.0.3,<0.0.4",
+    "torch-tb-profiler>=0.4.3,<0.5",
+    "nbformat>=5.10.4,<6",
+    "jupyterlab>=4.4.5",
+]
+
+[[tool.uv.index]]
+name = "pytorch"
+url = "https://download.pytorch.org/whl/cu128"
+explicit = true
+
+[tool.uv.sources]
+torch = { index = "pytorch" }
+nist-polar-filtering = { workspace = true }
+yellow-cards-workflow = { git = "https://github.com/mkhrisanfov/yellow-cards-workflow" }
+[tool.uv]
+package = true
+
+[project.scripts]
+nist-polar-filtering = "nist_polar_filtering:main"
+
+[build-system]
+requires = ["uv_build>=0.9.0,<0.10.0"]
+build-backend = "uv_build"
